@@ -21,3 +21,22 @@ class Solution:
 
         combination(0, candidates, target, [])
         return result
+
+class Solution:
+    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
+        result=[]
+        count_r=[]
+        candidates.sort()
+        def combination(root, start, target, comb):
+            if target==0:               
+                result.append(comb)
+                return 
+            elif target < root:
+                return 
+            else:
+                for n in range(start,len(candidates)):
+                    combination(candidates[n],n,target-candidates[n],comb+[candidates[n]])
+
+        combination(0,0,target,[])
+        return result
+    
